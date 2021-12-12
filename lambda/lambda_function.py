@@ -68,9 +68,60 @@ class JoeBironIntentHandler(AbstractRequestHandler):
         return (
             handler_input.response_builder
                 .speak(speak_output)
+                .set_should_end_session(False)
                 .response
         )
 
+class FuckYoLifeIntentHandler(AbstractRequestHandler):
+    """Handler for Help Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ask_utils.is_intent_name("FuckYoLifeIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        speak_output = "<amazon:emotion name='disappointed' intensity='high'> Bing bong! </amazon:emotion>"
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .set_should_end_session(False)
+                .response
+        )
+
+class DogsIntentHandler(AbstractRequestHandler):
+    """Handler for Help Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ask_utils.is_intent_name("DogsIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        speak_output = "Just know upstairs I'm going hard. <break time='0.5s'/> bing bong"
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .set_should_end_session(False)
+                .response
+        )
+
+class ArianaIntentHandler(AbstractRequestHandler):
+    """Handler for Help Intent."""
+    def can_handle(self, handler_input):
+        # type: (HandlerInput) -> bool
+        return ask_utils.is_intent_name("ArianaIntent")(handler_input)
+
+    def handle(self, handler_input):
+        # type: (HandlerInput) -> Response
+        speak_output = "Sup mama.  <break time='0.5s'/> Come to coney island take a spin on the cyclone.  <break time='0.5s'/> I miss you"
+
+        return (
+            handler_input.response_builder
+                .speak(speak_output)
+                .set_should_end_session(False)
+                .response
+        )
 
 class HelpIntentHandler(AbstractRequestHandler):
     """Handler for Help Intent."""
@@ -192,8 +243,11 @@ sb.add_request_handler(HelloWorldIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
 sb.add_request_handler(FallbackIntentHandler())
-sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_request_handler(JoeBironIntentHandler())
+sb.add_request_handler(FuckYoLifeIntentHandler())
+sb.add_request_handler(DogsIntentHandler())
+sb.add_request_handler(ArianaIntentHandler())
+sb.add_request_handler(SessionEndedRequestHandler())
 sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
 
 
