@@ -63,7 +63,7 @@ class JoeBironIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Sup baby, take me out to dinner"
+        speak_output = "<amazon:effect name='whispered'> Sup baby! <break time='0.5s'/> take me out to dinner </amazon:effect>"
 
         return (
             handler_input.response_builder
